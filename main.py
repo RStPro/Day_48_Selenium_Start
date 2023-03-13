@@ -15,10 +15,11 @@ load_dotenv(dotenv_path=dotenv_path)
 service = ChromeService(executable_path=ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
-driver.get('https://www.amazon.es/-/pt/dp/B0B1YJRL9X/ref=sr_1_1?crid=2KC9ENME9RCD3&keywords=garmin+enduro+2&qid=1678548009&s=electronics&sprefix=garmin+enduro+%2Celectronics%2C97&sr=1-1')
+driver.get('https://www.garmin.com/pt-PT/p/854515')
+Xpath = '//*[@id="js__product__info__name"]'
+price = driver.find_element(By.XPATH, Xpath).get_attribute("innerHTML")
 
-price = driver.find_element(By.CLASS_NAME, "a-price-whole")
-print(price.text)
+print(price)
 
 # driver.close() # closes a tab
 driver.quit() # quit the browser
